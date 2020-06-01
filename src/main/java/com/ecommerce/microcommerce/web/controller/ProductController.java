@@ -17,6 +17,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Api( description="API pour es opérations CRUD sur les produits.")
@@ -103,6 +106,10 @@ public class ProductController {
         return productDao.chercherUnProduitCher(400);
     }
 
-
+    @GetMapping(value="/Produits/TriProduits")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+        return productDao.findAllByOrderByNom();
+    }
+    
 
 }
